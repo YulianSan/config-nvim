@@ -21,7 +21,7 @@ local on_attach = function(_, bufnr)
   end
 
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-  nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+  -- nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
   nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
   nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
   nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
@@ -49,7 +49,7 @@ require('mason').setup()
 
 -- Enable the following language servers
 -- Feel free to add/remove any LSPs that you want here. They will automatically be installed
-local servers = { 'tsserver', 'lua_ls' }
+local servers = { 'tsserver', 'html', 'cssls', 'intelephense', 'omnisharp' }
 
 -- Ensure the servers above are installed
 require('mason-lspconfig').setup {
@@ -105,7 +105,7 @@ local luasnip = require 'luasnip'
 
 cmp.setup {
   view = {
-  	entries = "native"
+    entries = "native"
   },
   snippet = {
     expand = function(args)
@@ -155,3 +155,12 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
+local autocmd_group = vim.api.nvim_create_augroup("Custom auto-commands", { clear = true })
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = { "*.php", "*.js", "*.html", "*.ts" },
+  callback = function()
+    vim.lsp.buf.format { async = false }
+  end,
+  group = autocmd_group,
+})
