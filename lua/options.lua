@@ -24,7 +24,7 @@ vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme
 --vim.cmd [[colorscheme onedark]]
-vim.cmd.colorscheme "catppuccin"
+vim.cmd.colorscheme "tokyonight-night"
 
 --vim.cmd()
 vim.opt.clipboard = 'unnamedplus'
@@ -34,6 +34,10 @@ vim.o.completeopt = 'menuone,noselect'
 
 -- Concealer for Neorg
 vim.o.conceallevel=2
+vim.opt.colorcolumn = "80"
+-- vim.cmd(
+--   [[autocmd ColorScheme * highlight ColorColumn guibg=#15161f ctermbg=235]]
+-- )
 
 -- [[ Basic Keymaps ]]
 -- Set <space> as the leader key

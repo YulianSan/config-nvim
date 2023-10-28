@@ -157,7 +157,12 @@ require('lazy').setup({
 
   'ray-x/go.nvim',
   'ray-x/guihua.lua',
-  { "catppuccin/nvim", as = "catppuccin" },
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
   {
     "windwp/nvim-autopairs",
       config = function() require("nvim-autopairs").setup {} end
