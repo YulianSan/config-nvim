@@ -23,6 +23,8 @@ vim.keymap.set('v', "<Tab>", ">gv", { noremap = true, silent = true })
 vim.keymap.set('v', "<S-Tab>", "<gv", { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap('n', '<C-S-Left>', ':vertical resize -5<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<C-S-Up>', ':horizontal resize +5<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<C-S-Down>', ':horizontal resize -5<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-S-Right>', ':vertical resize +5<CR>', { noremap = true })
 
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
