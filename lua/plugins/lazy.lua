@@ -255,4 +255,5 @@ require('lazy').setup({
       end)
     end,
   },
+  "windwp/nvim-ts-autotag",
 })
