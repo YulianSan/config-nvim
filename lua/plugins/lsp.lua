@@ -1,4 +1,3 @@
--- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
@@ -103,14 +102,27 @@ require('lspconfig').luau_lsp.setup {
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 
+local cmp_window = require "cmp.config.window"
 cmp.setup {
-  view = {
-    entries = "native"
+  formatting = {
+    fields = { "kind", "abbr", "menu" },
+    max_width = 0,
+    format = function(_, vim_item)
+      local kindLabel = vim_item.kind
+      vim_item.kind = ( require('icons').kind[kindLabel] or "?") .. " "
+      vim_item.menu = " (" .. kindLabel .. ")"
+
+      return vim_item
+    end,
   },
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
     end,
+  },
+  window = {
+    completion = cmp_window.bordered(),
+    documentation = cmp_window.bordered(),
   },
   mapping = cmp.mapping.preset.insert {
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
