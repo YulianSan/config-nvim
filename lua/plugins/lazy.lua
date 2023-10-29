@@ -55,7 +55,6 @@ require('lazy').setup({
   'nvim-tree/nvim-tree.lua',
   'ThePrimeagen/git-worktree.nvim',
   'tpope/vim-surround',
-  'xiyaowong/nvim-transparent',
   { 
     'numToStr/FTerm.nvim',
     config = function()
@@ -155,7 +154,7 @@ require('lazy').setup({
     }
   },
 
-  'ray-x/go.nvim',
+  -- 'ray-x/go.nvim',
   'ray-x/guihua.lua',
   {
     "folke/tokyonight.nvim",
@@ -244,5 +243,16 @@ require('lazy').setup({
       }
     end,
     dependencies = { {'nvim-tree/nvim-web-devicons'}}
-  }
+  },
+  'mg979/vim-visual-multi',
+  'ggandor/lightspeed.nvim',
+  { 
+    'AckslD/nvim-trevJ.lua',
+    config = 'require("trevj").setup()',
+    init = function()
+      vim.keymap.set('n', '<space>j', function()
+        require('trevj').format_at_cursor()
+      end)
+    end,
+  },
 })
