@@ -176,3 +176,16 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   end,
   group = autocmd_group,
 })
+
+vim.keymap.set("n", "gl", function()
+    local float = vim.diagnostic.config().float
+
+    if float then
+      local config = type(float) == "table" and float or {}
+      config.scope = "line"
+
+      vim.diagnostic.open_float(config)
+    end
+  end,
+  {noremap=false}
+)
