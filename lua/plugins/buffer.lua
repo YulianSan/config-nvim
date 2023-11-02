@@ -17,6 +17,8 @@ require("bufferline").setup{
 
 vim.keymap.set("n", "<S-l>", ":BufferLineCycleNext<CR>", {noremap=true})
 vim.keymap.set("n", "<S-h>", ":BufferLineCyclePrev<CR>", {noremap=true})
+vim.keymap.set("n", "<leader>bl", ":BufferLineCloseRight<CR>", {noremap=true})
+vim.keymap.set("n", "<leader>bh", ":BufferLineCloseLeft<CR>", {noremap=true})
 
 function buf_kill(kill_command, bufnr, force)
   kill_command = kill_command or "bd"
