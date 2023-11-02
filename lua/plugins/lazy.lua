@@ -256,4 +256,5 @@ require('lazy').setup({
     end,
   },
   "windwp/nvim-ts-autotag",
+  "christoomey/vim-tmux-navigator",
 })
