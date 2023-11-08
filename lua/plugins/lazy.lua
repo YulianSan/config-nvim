@@ -61,7 +61,7 @@ require('lazy').setup({
     local map = vim.api.nvim_set_keymap
     local opts = { noremap = true, silent = true }
     require 'FTerm'.setup({
-      blend = 5,
+      blend = 15,
       dimensions = {
         height = 0.90,
         width = 0.90,
