@@ -263,16 +263,18 @@ require('lazy').setup({
   "windwp/nvim-ts-autotag",
   "christoomey/vim-tmux-navigator",
   "ap/vim-css-color",
-  {
-    'ray-x/navigator.lua',
-    requires = {
-      { 'ray-x/guihua.lua', run = 'cd lua/fzy && make' },
-      { 'neovim/nvim-lspconfig' },
-    },
-    config = function()
-      require("navigator").setup({
-        mason = true,
-      })
-    end,
-  },
+  -- {
+  --   'ray-x/navigator.lua',
+  --   requires = {
+  --     { 'ray-x/guihua.lua', run = 'cd lua/fzy && make' },
+  --     { 'neovim/nvim-lspconfig' },
+  --   },
+  --   config = function()
+  --     require("navigator").setup({
+  --       lsp = { 
+  --         disable_lsp='all',
+  --       },
+  --     })
+  --   end,
+  -- },
 })
