@@ -26,9 +26,6 @@ vim.wo.signcolumn = 'yes'
 --vim.cmd [[colorscheme onedark]]
 vim.cmd.colorscheme "tokyonight-night"
 
---vim.cmd()
-vim.opt.clipboard = 'unnamedplus'
-
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
