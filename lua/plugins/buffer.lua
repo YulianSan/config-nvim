@@ -10,7 +10,6 @@ require("bufferline").setup{
             separator = true,
         }
     },
-    separator_style = "slope",
     separator = true,
   }
 }

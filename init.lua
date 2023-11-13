@@ -13,14 +13,15 @@ require('plugins.trouble')
 require('plugins.nvtree')
 require('plugins.buffer')
 require('plugins.notify')
+require('plugins.transparent')
 require('config.navigator')
 
-vim.cmd [[hi NvimTreeNormal guibg=NONE ctermbg=NONE]]
-vim.cmd [[hi Normal guibg=none ctermbg=none]]
-vim.cmd [[hi LineNr guibg=none ctermbg=none]]
-vim.cmd [[hi Folded guibg=none ctermbg=none]]
-vim.cmd [[hi NonText guibg=none ctermbg=none]]
-vim.cmd [[hi SpecialKey guibg=none ctermbg=none]]
-vim.cmd [[hi VertSplit guibg=none ctermbg=none]]
-vim.cmd [[hi SignColumn guibg=none ctermbg=none]]
-vim.cmd [[hi EndOfBuffer guibg=none ctermbg=none]]
+-- vim.cmd [[hi NvimTreeNormal guibg=NONE ctermbg=NONE]]
+-- vim.cmd [[hi Normal guibg=none ctermbg=none]]
+-- vim.cmd [[hi LineNr guibg=none ctermbg=none]]
+-- vim.cmd [[hi Folded guibg=none ctermbg=none]]
+-- vim.cmd [[hi NonText guibg=none ctermbg=none]]
+-- vim.cmd [[hi SpecialKey guibg=none ctermbg=none]]
+-- vim.cmd [[hi VertSplit guibg=none ctermbg=none]]
+-- vim.cmd [[hi SignColumn guibg=none ctermbg=none]]
+-- vim.cmd [[hi EndOfBuffer guibg=none ctermbg=none]]
