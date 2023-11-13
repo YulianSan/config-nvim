@@ -288,4 +288,5 @@ require('lazy').setup({
     end,
   },
   'xiyaowong/transparent.nvim',
+  'yamatsum/nvim-cursorline',
 })
