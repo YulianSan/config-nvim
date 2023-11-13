@@ -184,9 +184,8 @@ cmp.setup {
 		vim_item.kind_hl_group = hl_group
 
 		vim_item.kind = string.rep("X", 2)
-
-		return vim_item
       end 
+	  return vim_item
     end,
   },
   snippet = {
