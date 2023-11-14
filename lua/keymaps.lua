@@ -8,6 +8,7 @@ vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 vim.keymap.set("n", "<leader>rw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
+vim.api.nvim_set_keymap("n", "tw", ":Twilight<enter>", {noremap=false})
 vim.api.nvim_set_keymap("n", "tk", ":bnext<enter>", {noremap=false})
 vim.api.nvim_set_keymap("n", "tj", ":bprev<enter>", {noremap=false})
 vim.api.nvim_set_keymap("n", "th", ":bfirst<enter>", {noremap=false})
