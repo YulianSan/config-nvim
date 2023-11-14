@@ -14,6 +14,7 @@ require('plugins.nvtree')
 require('plugins.buffer')
 require('plugins.notify')
 require('plugins.transparent')
+require('plugins.cursorline')
 require('config.navigator')
 
 -- vim.cmd [[hi NvimTreeNormal guibg=NONE ctermbg=NONE]]

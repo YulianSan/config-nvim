@@ -37,6 +37,7 @@ require("transparent").setup({
     "BufferLineFill",
     "BufferLineBackground",
     "BufferLineBufferSelected",
+    "NormalFloat",
   },
   exclude_groups = {},
 })
