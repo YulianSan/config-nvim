@@ -37,3 +37,8 @@ vim.api.nvim_set_keymap('n', '<C-S-Down>', ':horizontal resize -5<CR>', { norema
 vim.api.nvim_set_keymap('n', '<C-S-Right>', ':vertical resize +5<CR>', { noremap = true })
 
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+
+vim.keymap.set('n', '<C-h>', ':TmuxNavigateLeft<CR>', { silent = true })
+vim.keymap.set('n', '<C-l>', ':TmuxNavigateRight<CR>', { silent = true })
+vim.keymap.set('n', '<C-j>', ':TmuxNavigateDown<CR>', { silent = true })
+vim.keymap.set('n', '<C-k>', ':TmuxNavigateUp<CR>', { silent = true })
