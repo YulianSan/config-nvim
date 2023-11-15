@@ -44,4 +44,5 @@ vim.opt.shiftwidth = 4
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+vim.g.indent_blankline_filetype_exclude = {'dashboard'}
 
