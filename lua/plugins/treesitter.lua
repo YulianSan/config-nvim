@@ -8,7 +8,11 @@ require('nvim-treesitter.configs').setup {
     'bash', 'markdown', 'markdown_inline', 'kdl', 'sql', 'org',
     'javascript', 'html', 'c_sharp', 'php', 'tsx', 'vue'
   },
-
+  rainbow = {
+    enable = true,
+    extended_mode = true,
+    max_file_lines = nil,
+  },
   highlight = { enable = true },
   indent = { enable = true },
   incremental_selection = {
