@@ -271,6 +271,11 @@ vim.keymap.set("n", "gl", function()
   {noremap=false}
 )
 
+vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
+  vim.lsp.handlers.signature_help,
+  { border = "rounded" }
+)
+
 vim.lsp.handlers['textDocument/hover'] = function(_, result, ctx, config)
   config = config or {}
   config.border = "rounded"
