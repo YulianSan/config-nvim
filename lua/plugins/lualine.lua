@@ -1,9 +1,9 @@
 function theme()
     local colors = {
         darkgray = "#16161d",
-        gray = "#727169",
+        gray = "#dddddd",
         innerbg = nil,
-        outerbg = "#16161D",
+        outerbg = "#222222",
         normal = "#7e9cd8",
         insert = "#98bb6c",
         visual = "#ffa066",
@@ -48,7 +48,6 @@ require('lualine').setup {
   options = {
     theme = theme(),
     icons_enabled = true,
-    theme = "horizon",
     component_separators = { left = "|", right = "|" },
     section_separators = { left = "", right = "" },
     disabled_filetypes = { 'packer', 'NVimTree', 'NvimTree' }
