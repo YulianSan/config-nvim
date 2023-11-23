@@ -22,6 +22,10 @@ vim.cmd([[
 function M.setup()
   vim.g.dadbod_view = 'visible'
 
+  vim.cmd([[
+    autocmd FileType dbui nmap <buffer> l <Plug>(DBUI_SelectLine)
+  ]])
+
   vim.g.db_ui_save_location = vim.fn.stdpath "config" .. require("plenary.path").path.sep .. "db_ui"
 
   vim.api.nvim_create_autocmd("FileType", {
