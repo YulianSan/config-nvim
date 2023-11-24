@@ -27,6 +27,13 @@ function M.setup()
   ]])
 
   vim.g.db_ui_save_location = vim.fn.stdpath "config" .. require("plenary.path").path.sep .. "db_ui"
+  vim.g.db_ui_table_helpers = {
+    mysql = {
+      ["Foreign Keys"] = "SELECT *\n  FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS\nWHERE TABLE_SCHEMA = (SELECT DATABASE())\n  AND TABLE_NAME = '{table}'\n  AND CONSTRAINT_TYPE = 'FOREIGN KEY';",
+      ["Primary Keys"] = "SELECT TABLE_SCHEMA, TABLE_NAME, COLUMN_NAME, DATA_TYPE\n  FROM INFORMATION_SCHEMA.COLUMNS\n  WHERE TABLE_SCHEMA = (SELECT DATABASE())\n  AND COLUMN_KEY = 'PRI'\n  AND TABLE_NAME = '{table}' ORDER BY TABLE_NAME;", 
+      Count = "SELECT count(*) FROM {table}"
+    }
+  }
 
   vim.api.nvim_create_autocmd("FileType", {
     pattern = {
