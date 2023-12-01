@@ -213,7 +213,14 @@ require('lazy').setup({
   { "rcarriga/nvim-dap-ui", dependencies = {"mfussenegger/nvim-dap"} },
   'theHamsta/nvim-dap-virtual-text',
   'leoluz/nvim-dap-go',
-
+  {
+    'mxsdev/nvim-dap-vscode-js',
+  },
+  {
+    "microsoft/vscode-js-debug",
+    opt = true,
+    build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out" 
+  },
 
   -- Git related plugins
   'tpope/vim-fugitive',
