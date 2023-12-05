@@ -326,4 +326,5 @@ require('lazy').setup({
   'xiyaowong/transparent.nvim',
   'yamatsum/nvim-cursorline',
   'p00f/nvim-ts-rainbow',
+  { 'aznhe21/actions-preview.nvim', lazy = true },
 })

@@ -1,5 +1,6 @@
 vim.api.nvim_set_keymap("i", "jj", "<Esc>", {noremap=false})
 
+-- vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action())
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("x", "<leader>p", "\"_dP")

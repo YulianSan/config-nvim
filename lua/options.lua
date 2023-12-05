@@ -1,5 +1,6 @@
 -- Set highlight on search
 vim.o.hlsearch = true
+vim.opt.foldmethod = "syntax"
 
 -- Make line numbers default
 vim.wo.number = true
