@@ -13,7 +13,7 @@ vim.keymap.set('n', '<leader>B', function()
   require 'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))
 end)
 
-vim.keymap.set("n", "<leader>iu", require 'dapui'.toggle)
+vim.keymap.set("n", "<leader>du", require 'dapui'.toggle)
 vim.keymap.set("n", "<leader>db", ":DapToggleBreakpoint<CR>", {noremap=true})
 vim.keymap.set("n", "<leader>dc", ":DapContinue<CR>", {noremap=true})
 vim.keymap.set("n", "<leader>dr", ":lua require('dapui').open({reset = true})<CR>", {noremap=true})
