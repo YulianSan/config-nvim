@@ -327,4 +327,12 @@ require('lazy').setup({
   'yamatsum/nvim-cursorline',
   'p00f/nvim-ts-rainbow',
   { 'aznhe21/actions-preview.nvim', lazy = true },
+  {
+    'nvim-treesitter/nvim-treesitter-context',
+    config = function()
+      require("treesitter-context").setup({
+        enable = false,
+      })
+    end,
+  }
 })
