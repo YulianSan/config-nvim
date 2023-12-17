@@ -270,7 +270,7 @@ require('lazy').setup({
             [[⣴⣷⣀⣸⣿⠀⠀⠀⠀⠀⠀⠘⣿⣿⣿⣿⠹⣿⣯⣤⣾⠏⠉⠉⠉⠙⠢⠀]],
             [[⠈⠙⢿⣿⡟⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣄⠛⠉⢩⣷⣴⡆⠀⠀⠀⠀⠀]],
             [[⠀⠀⠀⠋⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⣿⣿⣿⣀⡠⠋⠈⢿⣇⠀⠀⠀⠀⠀]],
-            [[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠿⠿⠛⠁⠀⠀⠀⠀⠀⠀⠀  ]],
+            [[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠿⠿⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀]],
           }
         },
       }
@@ -281,11 +281,8 @@ require('lazy').setup({
   'ggandor/lightspeed.nvim',
   { 
     'AckslD/nvim-trevJ.lua',
-    config = 'require("trevj").setup()',
-    init = function()
-      vim.keymap.set('n', '<space>j', function()
-        require('trevj').format_at_cursor()
-      end)
+    config = function()
+      require('plugins.trevj').setup()
     end,
   },
   "windwp/nvim-ts-autotag",
