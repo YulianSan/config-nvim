@@ -39,6 +39,9 @@ function M.setup()
           final_end_line = true,
           skip = {tag_name = true}
         },
+        type_parameters = { final_separator = ",", final_end_line = true, skip = {} }, 
+        type_arguments = { final_separator = false, final_end_line = true },
+        object_type = { final_separator = false, final_end_line = true, skip = {} }, 
       }
     }
   })
