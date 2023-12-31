@@ -345,7 +345,7 @@ require('lazy').setup({
     config = function ()
       vim.keymap.set(
         'i',
-        '<C-g>',
+        '<C-k>',
         function () return vim.fn['codeium#Accept']() end,
         { expr = true, silent = true, noremap=true }
       )
