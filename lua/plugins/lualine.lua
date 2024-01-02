@@ -1,61 +1,83 @@
-function theme()
-    local colors = {
-        darkgray = "#16161d",
-        gray = "#dddddd",
-        innerbg = nil,
-        outerbg = "#222222",
-        normal = "#7e9cd8",
-        insert = "#98bb6c",
-        visual = "#ffa066",
-        replace = "#e46876",
-        command = "#e6c384",
-    }
-    return {
-        inactive = {
-            a = { fg = colors.gray, bg = colors.outerbg, gui = "bold" },
-            b = { fg = colors.gray, bg = colors.outerbg },
-            c = { fg = colors.gray, bg = colors.innerbg },
-        },
-        visual = {
-            a = { fg = colors.darkgray, bg = colors.visual, gui = "bold" },
-            b = { fg = colors.gray, bg = colors.outerbg },
-            c = { fg = colors.gray, bg = colors.innerbg },
-        },
-        replace = {
-            a = { fg = colors.darkgray, bg = colors.replace, gui = "bold" },
-            b = { fg = colors.gray, bg = colors.outerbg },
-            c = { fg = colors.gray, bg = colors.innerbg },
-        },
-        normal = {
-            a = { fg = colors.darkgray, bg = colors.normal, gui = "bold" },
-            b = { fg = colors.gray, bg = colors.outerbg },
-            c = { fg = colors.gray, bg = colors.innerbg },
-        },
-        insert = {
-            a = { fg = colors.darkgray, bg = colors.insert, gui = "bold" },
-            b = { fg = colors.gray, bg = colors.outerbg },
-            c = { fg = colors.gray, bg = colors.innerbg },
-        },
-        command = {
-            a = { fg = colors.darkgray, bg = colors.command, gui = "bold" },
-            b = { fg = colors.gray, bg = colors.outerbg },
-            c = { fg = colors.gray, bg = colors.innerbg },
-        },
-    }
-end
+local my_lualine = require('config/lualine')
+local mode_with_lenny = my_lualine.mode_with_lenny
+local lsp_server_info = my_lualine.lsp_server_info
 
 require('lualine').setup {
   options = {
-    theme = theme(),
+    -- theme = theme(),
+    theme = 'palenight',
     icons_enabled = true,
     component_separators = { left = "|", right = "|" },
-    section_separators = { left = "", right = "" },
-    disabled_filetypes = { 'packer', 'NVimTree', 'NvimTree' }
+    disabled_filetypes = { 'packer', 'NVimTree', 'NvimTree' },
+    section_separators = { left = '', right = ''},
   },
-  sections = {
-    lualine_x = {
-      'encoding', 'fileformat', 'filetype',
+    sections = {
+    lualine_a = {
+      {
+        mode_with_lenny,
+      },
     },
-  }
+    lualine_b = {
+      {
+        "filetype",
+        colored = true,
+        icon_only = true,
+        padding = { left = 1, right = 0}
+      },
+      {
+        "filename",
+        symbols = {
+          modified = " ",
+          readonly = "",
+          unnamed = " "
+        }
+      }
+    },
+    lualine_c = {
+      { "branch", icon = "" },
+      {
+        "diagnostics",
+        sources = { "nvim_diagnostic" },
+        symbols = {
+          error = " ",
+          warn = " ",
+          info = " ",
+          hint = " "
+        }
+      }
+    },
+    lualine_x = {
+        {
+            'diff'
+        },
+        {
+            lsp_server_info,
+            icon = " LSP:"
+        },
+    },
+    lualine_y = {
+      {
+        "progress",
+        separator = { left = "", right = ""},
+        fmt = function(str)
+          return "%#MiniStatuslineDevinfo#" .. str
+        end
+      }
+    },
+    lualine_z = {
+      {
+        "location",
+        fmt = function(str)
+          return "%#MiniStatuslineDevinfo#▎" .. str
+        end,
+        padding = { left = 0, right = 1}
+      }
+    }
+  },
+  -- sections = {
+  --   lualine_x = {
+  --     'encoding', 'fileformat', 'filetype',
+  --   },
+  -- }
 }
 
