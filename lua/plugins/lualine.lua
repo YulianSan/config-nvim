@@ -2,6 +2,9 @@ local my_lualine = require('config/lualine')
 local mode_with_lenny = my_lualine.mode_with_lenny
 local lsp_server_info = my_lualine.lsp_server_info
 
+vim.g.VM_set_statusline = 0
+vim.g.VM_silent_exit = 1
+
 require('lualine').setup {
   options = {
     -- theme = theme(),

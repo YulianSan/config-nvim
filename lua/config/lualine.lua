@@ -26,7 +26,7 @@ local mode_alias = {
 
 M.mode_with_lenny = function()
   local mode = vim.fn.mode()
-  return lenny_mapping[mode]  .. mode_alias[mode]
+  return lenny_mapping[mode] .. (vim.b['visual_multi'] and mode_alias[mode] .. ' - MULTI' or mode_alias[mode])
 end
 
 M.lsp_server_info = function()
