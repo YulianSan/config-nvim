@@ -352,14 +352,14 @@ require('lazy').setup({
 
       vim.keymap.set(
         'i',
-        '<C-n>',
+        '<C-j>',
         function() return vim.fn['codeium#CycleCompletions'](1) end,
         { expr = true, silent = true, noremap=true }
       )
 
       vim.keymap.set(
         'i',
-        '<C-p>',
+        '<C-f>',
         function() return vim.fn['codeium#CycleCompletions'](-1) end,
         { expr = true, silent = true, noremap=true }
       )
