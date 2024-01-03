@@ -5,11 +5,11 @@ local lsp_server_info = my_lualine.lsp_server_info
 require('lualine').setup {
   options = {
     -- theme = theme(),
-    theme = 'palenight',
+    theme = 'material',
     icons_enabled = true,
     component_separators = { left = "|", right = "|" },
     disabled_filetypes = { 'packer', 'NVimTree', 'NvimTree' },
-    section_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
   },
     sections = {
     lualine_a = {
@@ -54,6 +54,12 @@ require('lualine').setup {
             lsp_server_info,
             icon = " LSP:"
         },
+        { 
+          'vim.fn["codeium#GetStatusString"]()',
+          fmt = function(str) 
+            return "suggestions " .. str:lower():match("^%s*(.-)%s*$")
+          end 
+        },
     },
     lualine_y = {
       {
@@ -74,10 +80,5 @@ require('lualine').setup {
       }
     }
   },
-  -- sections = {
-  --   lualine_x = {
-  --     'encoding', 'fileformat', 'filetype',
-  --   },
-  -- }
 }
 
