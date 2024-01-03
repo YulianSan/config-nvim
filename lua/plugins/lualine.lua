@@ -44,12 +44,12 @@ require('lualine').setup {
           info = " ",
           hint = " "
         }
-      }
+      },
+      {
+          'diff'
+      },
     },
     lualine_x = {
-        {
-            'diff'
-        },
         {
             lsp_server_info,
             icon = " LSP:"
