@@ -57,7 +57,7 @@ require('lualine').setup {
         { 
           'vim.fn["codeium#GetStatusString"]()',
           fmt = function(str) 
-            return "suggestions " .. str:lower():match("^%s*(.-)%s*$")
+            return '{...}' .. str  
           end 
         },
     },
