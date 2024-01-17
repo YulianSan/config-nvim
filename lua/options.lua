@@ -33,8 +33,8 @@ vim.o.completeopt = 'menuone,noselect'
 -- Concealer for Neorg
 vim.o.conceallevel=2
 vim.opt.colorcolumn = "80"
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
 -- vim.cmd(
 --   [[autocmd ColorScheme * highlight ColorColumn guibg=#15161f ctermbg=235]]
 -- )
