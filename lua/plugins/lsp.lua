@@ -252,7 +252,7 @@ vim.api.nvim_create_autocmd('FileType', {
 local autocmd_group = vim.api.nvim_create_augroup("Custom auto-commands", { clear = true })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = { "*.php", "*.js", "*.html", "*.ts", "*.cs", "*.tsx" },
+  pattern = { "*.php", "*.js", "*.html", "*.ts", "*.cs", "*.tsx", "*.c" },
   callback = function()
     vim.lsp.buf.format { async = false }
   end,
