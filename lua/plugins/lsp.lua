@@ -56,6 +56,7 @@ local servers = {
   'omnisharp',
   'volar',
   'tailwindcss',
+  'clangd'
 }
 
 -- Ensure the servers above are installed
