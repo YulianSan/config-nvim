@@ -56,7 +56,8 @@ local servers = {
   'omnisharp',
   'volar',
   'tailwindcss',
-  'clangd'
+  'clangd',
+  'rust_analyzer',
 }
 
 -- Ensure the servers above are installed
@@ -252,7 +253,7 @@ vim.api.nvim_create_autocmd('FileType', {
 local autocmd_group = vim.api.nvim_create_augroup("Custom auto-commands", { clear = true })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = { "*.php", "*.js", "*.html", "*.ts", "*.cs", "*.tsx", "*.c" },
+  pattern = { "*.php", "*.rs", "*.js", "*.html", "*.ts", "*.cs", "*.tsx", "*.c" },
   callback = function()
     vim.lsp.buf.format { async = false }
   end,
