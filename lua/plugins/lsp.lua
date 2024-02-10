@@ -260,6 +260,10 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   group = autocmd_group,
 })
 
+vim.diagnostic.config({
+  float = { border = "rounded" },
+})
+
 vim.keymap.set("n", "gl", function()
     local float = vim.diagnostic.config().float
 
