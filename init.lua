@@ -18,6 +18,7 @@ require('plugins.transparent')
 require('plugins.cursorline')
 require('config.navigator')
 require('plugins.actions-preview')
+require('plugins.neotest')
 
 -- vim.cmd [[hi NvimTreeNormal guibg=NONE ctermbg=NONE]]
 -- vim.cmd [[hi Normal guibg=none ctermbg=none]]
