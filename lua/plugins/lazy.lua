@@ -397,5 +397,11 @@ require('lazy').setup({
       "nvim-treesitter/nvim-treesitter",
       "marilari88/neotest-vitest",
     },
-  }
+  },
+  {
+    "mbbill/undotree",
+    config = function() 
+      vim.keymap.set("n", "<space>u", vim.cmd.UndotreeToggle)
+    end
+  },
 })
