@@ -416,6 +416,7 @@ require('lazy').setup({
       "antoinemadec/FixCursorHold.nvim",
       "nvim-treesitter/nvim-treesitter",
       "marilari88/neotest-vitest",
+      "rouge8/neotest-rust",
     },
   },
   {
