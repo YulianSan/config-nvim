@@ -8,7 +8,7 @@ vim.g.VM_silent_exit = 1
 require('lualine').setup {
   options = {
     -- theme = theme(),
-    theme = 'material',
+    theme = 'horizon',
     icons_enabled = true,
     component_separators = { left = "|", right = "|" },
     disabled_filetypes = { 'packer', 'NVimTree', 'NvimTree' },
@@ -17,7 +17,12 @@ require('lualine').setup {
     sections = {
     lualine_a = {
       {
+        function() return "   " end,
+        color = { gui = "bold", fg = "#ffffff", bg = "NONE" },
+      },
+      {
         mode_with_lenny,
+        separator = { left = '', right = ''},
       },
     },
     lualine_b = {
@@ -25,7 +30,7 @@ require('lualine').setup {
         "filetype",
         colored = true,
         icon_only = true,
-        padding = { left = 1, right = 0}
+        padding = { left = 1, right = 0},
       },
       {
         "filename",
@@ -37,20 +42,20 @@ require('lualine').setup {
       }
     },
     lualine_c = {
-      { "branch", icon = "" },
-      {
-        "diagnostics",
-        sources = { "nvim_diagnostic" },
-        symbols = {
-          error = " ",
-          warn = " ",
-          info = " ",
-          hint = " "
-        }
-      },
-      {
-          'diff'
-      },
+            { "branch", icon = "" },
+            {
+              "diagnostics",
+              sources = { "nvim_diagnostic" },
+              symbols = {
+                error = " ",
+                warn = " ",
+                info = " ",
+                hint = " "
+              }
+            },
+            {
+              'diff'
+            },
     },
     lualine_x = {
         {
@@ -79,9 +84,14 @@ require('lualine').setup {
         fmt = function(str)
           return "%#MiniStatuslineDevinfo#▎" .. str
         end,
-        padding = { left = 0, right = 1}
-      }
+        padding = { left = 0, right = 1},
+        separator = { left = '', right = ''},
+      },
+      {
+        -- adding border rounding
+        function() return "   " end,
+        color = { gui = "bold", fg = "NONE", bg = "NONE" },
+      },
     }
   },
 }
-
