@@ -25,7 +25,7 @@ vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme
 --vim.cmd [[colorscheme onedark]]
-vim.cmd.colorscheme "tokyonight-night"
+vim.cmd.colorscheme "gruvbox"
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'

@@ -42,7 +42,7 @@ require('lualine').setup {
         "filetype",
         colored = true,
         icon_only = true,
-        padding = { left = 1, right = 0},
+        padding = { left = 1, right = 1 },
       },
       {
         "filename",
@@ -92,12 +92,15 @@ require('lualine').setup {
     },
     lualine_z = {
       {
-        "location",
-        fmt = function(str)
-          return "%#MiniStatuslineDevinfo#▎" .. str
+        function()
+          return "%#MiniStatuslineDevinfo#"
         end,
-        padding = { left = 0, right = 1},
-        separator = { left = '', right = ''},
+      },
+      {
+        "location",
+        padding = { left = -5, right = 1},
+        separator = { right = ''},
+        color = { bg = "#454f59" },
       },
       {
         -- adding border rounding
