@@ -15,3 +15,5 @@ vim.api.nvim_set_keymap("t", "<leader>tt", '<C-\\><C-n>:lua require("FTerm").tog
 
 vim.api.nvim_set_keymap("n", "<leader>gc", ":Git commit -m \"", {noremap=false})
 vim.api.nvim_set_keymap("n", "<leader>gp", ":Git push -u origin HEAD<CR>", {noremap=false})
+vim.api.nvim_set_keymap("n", "<leader>ga", ":Git add %<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>gbn", ":Git checkout -b ", { noremap = true, silent = true })
