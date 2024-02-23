@@ -449,4 +449,5 @@ require('lazy').setup({
       })
     end,
   },
+  "godlygeek/tabular",
 })
