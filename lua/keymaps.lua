@@ -47,3 +47,6 @@ vim.keymap.set('n', '<C-j>', ':TmuxNavigateDown<CR>', { silent = true })
 vim.keymap.set('n', '<C-k>', ':TmuxNavigateUp<CR>', { silent = true })
 vim.keymap.set('n', '<leader>t=', ':Tab /=<CR>', { silent = true })
 vim.keymap.set('n', '<leader>td', ':Tab /:<CR>', { silent = true })
+
+vim.keymap.set('n', 'j', 'gj', { silent = true })
+vim.keymap.set('n', 'k', 'gk', { silent = true })

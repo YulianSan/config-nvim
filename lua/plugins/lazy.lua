@@ -414,7 +414,7 @@ require('lazy').setup({
         end, { expr = true })
     end
   },
-  { 
+  {
     "nvim-neotest/neotest",
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -426,7 +426,7 @@ require('lazy').setup({
   },
   {
     "mbbill/undotree",
-    config = function() 
+    config = function()
       vim.keymap.set("n", "<space>u", vim.cmd.UndotreeToggle)
     end
   },
