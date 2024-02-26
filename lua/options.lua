@@ -48,3 +48,10 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.g.indent_blankline_filetype_exclude = {'dashboard'}
 
+vim.api.nvim_create_user_command(
+  'Browse',
+  function (opts)
+    vim.fn.system { 'xdg-open', opts.fargs[1] }
+  end,
+    { nargs = 1 }
+)
