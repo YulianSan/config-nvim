@@ -467,4 +467,13 @@ require('lazy').setup({
       "tpope/vim-rhubarb",
     },
   },
+  {
+    'saecki/crates.nvim',
+    tag = 'stable',
+    config = function()
+        require('crates').setup({
+          popup = { border = 'rounded' },
+        })
+    end,
+  }
 })
