@@ -34,27 +34,17 @@ require('lualine').setup {
       },
       {
         mode_with_lenny,
-        separator = { left = '', right = ''},
+        separator = { left = '', right = ' '},
       },
     },
     lualine_b = {
       {
-        "filetype",
-        colored = true,
-        icon_only = true,
-        padding = { left = 1, right = 1 },
+        "branch",
+        icon = "",
+        padding = { left = 1, right = 2 },
       },
-      {
-        "filename",
-        symbols = {
-          modified = " ",
-          readonly = "",
-          unnamed = " "
-        }
-      }
     },
     lualine_c = {
-            { "branch", icon = "" },
             {
               "diagnostics",
               sources = { "nvim_diagnostic" },
@@ -99,7 +89,7 @@ require('lualine').setup {
       {
         "location",
         padding = { left = -5, right = 1},
-        separator = { right = ''},
+        separator = { right = ' '},
         color = { bg = "#454f59" },
       },
       {
