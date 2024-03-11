@@ -29,9 +29,10 @@ require("dap-vscode-js").setup({
 })
 
 local js_based_languages = { "typescript", "javascript", "typescriptreact" }
+local dap = require("dap")
 
 for _, language in ipairs(js_based_languages) do
-  require("dap").configurations[language] = {
+  dap.configurations[language] = {
     {
       type = "pwa-node",
       request = "launch",
@@ -56,3 +57,60 @@ for _, language in ipairs(js_based_languages) do
     }
   }
 end
+
+local function skipDisplayingVariable(variable, buf)
+  local filetype = vim.bo[buf].filetype
+  if variable.name == '$this' and filetype == 'php' then
+    return true
+  end
+  return false
+end
+
+require('nvim-dap-virtual-text').setup({
+  enabled = true,
+  enabled_commands = true,
+  highlight_changed_variables = true,
+  highlight_new_as_changed = false,
+  show_stop_reason = true,
+  commented = false,
+  only_first_definition = false,
+  all_references = true,
+  filter_references_pattern = '<module',
+  virt_text_pos = 'eol',
+  all_frames = false,
+  virt_lines = false,
+  virt_text_win_col = nil,
+  display_callback = function(variable, bufId, _stackframe, _node)
+    if true == skipDisplayingVariable(variable, bufId) then
+      return ''
+    end
+    return variable.name .. ': ' .. variable.value
+  end,
+})
+
+dap.adapters.php = {
+  type = 'executable',
+  command = 'node',
+  args = { os.getenv('HOME') .. '/vscode-php-debug/out/phpDebug.js'},
+}
+
+dap.configurations.php = {
+  {
+    name = "Listen for XDebug on Docker",
+    type = "php",
+    request = "launch",
+    port = 9003,
+    pathMappings = {
+      ["/var/www/html/"] = "${workspaceFolder}/.."
+    },
+    log = true,
+  },
+  {
+    name = "run current script",
+    type = "php",
+    request = "launch",
+    port = 9003,
+    cwd="${fileDirname}",
+    program = "${file}",
+  },
+}
