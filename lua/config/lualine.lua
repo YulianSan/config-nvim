@@ -24,9 +24,18 @@ local mode_alias = {
   S       = ' SELECT ',
 }
 
+M.show_macro_recording = function()
+    local recording_register = vim.fn.reg_recording()
+    if recording_register == "" then
+        return ""
+    else
+        return "Rec @" .. recording_register
+    end
+end
+
 M.mode_with_lenny = function()
   local mode = vim.fn.mode()
-  return lenny_mapping[mode] .. (vim.b['visual_multi'] and mode_alias[mode] .. ' - MULTI' or mode_alias[mode])
+  return lenny_mapping[mode] .. (vim.b['visual_multi'] and mode_alias[mode] .. ' - MULTI' or mode_alias[mode]) .. M.show_macro_recording()
 end
 
 M.lsp_server_info = function()
