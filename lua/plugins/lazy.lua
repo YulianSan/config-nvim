@@ -23,10 +23,10 @@ require('lazy').setup({
     config = function()
       require("neorg").setup {
         load = {
-          ["core.defaults"] = {}, -- Loads default behaviour
+          ["core.defaults"] = {},  -- Loads default behaviour
           ["core.concealer"] = {}, -- Adds pretty icons to your documents
           ["core.summary"] = {},
-          ["core.dirman"] = { -- Manages Neorg workspaces
+          ["core.dirman"] = {      -- Manages Neorg workspaces
             config = {
               workspaces = {
                 notes = "~/notes",
@@ -54,22 +54,28 @@ require('lazy').setup({
   },
   'nvim-tree/nvim-tree.lua',
   'ThePrimeagen/git-worktree.nvim',
+  {
+    'ahmedkhalf/project.nvim',
+    config = function()
+      require("project_nvim").setup {}
+    end
+  },
   'tpope/vim-surround',
-  { 
+  {
     'numToStr/FTerm.nvim',
     config = function()
-    local map = vim.api.nvim_set_keymap
-    local opts = { noremap = true, silent = true }
-    require 'FTerm'.setup({
-      blend = 0,
-      dimensions = {
-        height = 0.90,
-        width = 0.90,
-        x = 0.5,
-        y = 0.5,
-      },
-      hl = 'Normal',
-    })
+      local map = vim.api.nvim_set_keymap
+      local opts = { noremap = true, silent = true }
+      require 'FTerm'.setup({
+        blend = 0,
+        dimensions = {
+          height = 0.90,
+          width = 0.90,
+          x = 0.5,
+          y = 0.5,
+        },
+        hl = 'Normal',
+      })
     end
   },
 
@@ -77,24 +83,24 @@ require('lazy').setup({
     'rmagatti/goto-preview',
     config = function()
       require('goto-preview').setup {
-        width = 120; -- Width of the floating window
-        height = 15; -- Height of the floating window
-        border = {"↖", "─" ,"┐", "│", "┘", "─", "└", "│"}; -- Border characters of the floating window
-        default_mappings = true;
-        debug = false; -- Print debug information
-        opacity = nil; -- 0-100 opacity level of the floating window where 100 is fully transparent.
-        resizing_mappings = false; -- Binds arrow keys to resizing the floating window.
-        post_open_hook = nil; -- A function taking two arguments, a buffer and a window to be ran as a hook.
+        width = 120, -- Width of the floating window
+        height = 15, -- Height of the floating window
+        border = { "↖", "─", "┐", "│", "┘", "─", "└", "│" }, -- Border characters of the floating window
+        default_mappings = true,
+        debug = false, -- Print debug information
+        opacity = nil, -- 0-100 opacity level of the floating window where 100 is fully transparent.
+        resizing_mappings = false, -- Binds arrow keys to resizing the floating window.
+        post_open_hook = nil, -- A function taking two arguments, a buffer and a window to be ran as a hook.
         references = { -- Configure the telescope UI for slowing the references cycling window.
           telescope = require("telescope.themes").get_dropdown({ hide_preview = false })
-        };
+        },
         -- These two configs can also be passed down to the goto-preview definition and implementation calls for one off "peak" functionality.
-        focus_on_open = true; -- Focus the floating window when opening it.
-        dismiss_on_move = false; -- Dismiss the floating window when moving the cursor.
-        force_close = true, -- passed into vim.api.nvim_win_close's second argument. See :h nvim_win_close
-        bufhidden = "wipe", -- the bufhidden option to set on the floating window. See :h bufhidden
-        stack_floating_preview_windows = true, -- Whether to nest floating windows
-        preview_window_title = { enable = true, position = "left" }, -- Whether 
+        focus_on_open = true,                                        -- Focus the floating window when opening it.
+        dismiss_on_move = false,                                     -- Dismiss the floating window when moving the cursor.
+        force_close = true,                                          -- passed into vim.api.nvim_win_close's second argument. See :h nvim_win_close
+        bufhidden = "wipe",                                          -- the bufhidden option to set on the floating window. See :h bufhidden
+        stack_floating_preview_windows = true,                       -- Whether to nest floating windows
+        preview_window_title = { enable = true, position = "left" }, -- Whether
       }
     end
   },
@@ -130,7 +136,7 @@ require('lazy').setup({
         background_colour = "#000000",
       })
     end
-  },   
+  },
 
   {
     "folke/noice.nvim",
@@ -179,7 +185,7 @@ require('lazy').setup({
   },
   {
     "windwp/nvim-autopairs",
-      config = function() require("nvim-autopairs").setup {} end
+    config = function() require("nvim-autopairs").setup {} end
   },
 
 
@@ -215,7 +221,7 @@ require('lazy').setup({
     }
   },
 
-  { "rcarriga/nvim-dap-ui", dependencies = {"mfussenegger/nvim-dap"} },
+  { "rcarriga/nvim-dap-ui",                dependencies = { "mfussenegger/nvim-dap" } },
   'theHamsta/nvim-dap-virtual-text',
   'leoluz/nvim-dap-go',
   {
@@ -224,25 +230,25 @@ require('lazy').setup({
   {
     "microsoft/vscode-js-debug",
     opt = true,
-    build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out" 
+    build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out"
   },
 
   -- Git related plugins
   'tpope/vim-fugitive',
   'lewis6991/gitsigns.nvim',
 
-  'navarasu/onedark.nvim', -- Theme inspired by Atom
+  'navarasu/onedark.nvim',     -- Theme inspired by Atom
   'nvim-lualine/lualine.nvim', -- Fancier statusline
-  { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
-  'numToStr/Comment.nvim', -- "gc" to comment visual regions/lines 
-  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+  { "lukas-reineke/indent-blankline.nvim", main = "ibl",                            opts = {} },
+  'numToStr/Comment.nvim',     -- "gc" to comment visual regions/lines
+  'tpope/vim-sleuth',          -- Detect tabstop and shiftwidth automatically
   -- Fuzzy Finder (files, lsp, etc)
-  { 'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' } },
+  { 'nvim-telescope/telescope.nvim',            branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' } },
   'nvim-telescope/telescope-symbols.nvim',
   'ThePrimeagen/harpoon',
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
-  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make', cond = vim.fn.executable 'make' == 1 },
+  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make',   cond = vim.fn.executable 'make' == 1 },
   {
     "folke/twilight.nvim",
     opts = {
@@ -252,8 +258,8 @@ require('lazy').setup({
     }
   },
   {
-    'akinsho/bufferline.nvim', 
-    version = "*", 
+    'akinsho/bufferline.nvim',
+    version = "*",
     dependencies = 'nvim-tree/nvim-web-devicons'
   },
   {
@@ -316,11 +322,11 @@ require('lazy').setup({
         },
       }
     end,
-    dependencies = { {'nvim-tree/nvim-web-devicons'}}
+    dependencies = { { 'nvim-tree/nvim-web-devicons' } }
   },
   'mg979/vim-visual-multi',
   'ggandor/lightspeed.nvim',
-  { 
+  {
     'AckslD/nvim-trevJ.lua',
     config = function()
       require('plugins.trevj').setup()
@@ -337,7 +343,7 @@ require('lazy').setup({
   --   },
   --   config = function()
   --     require("navigator").setup({
-  --       lsp = { 
+  --       lsp = {
   --         disable_lsp='all',
   --       },
   --     })
@@ -367,41 +373,42 @@ require('lazy').setup({
   },
   {
     'Exafunction/codeium.vim',
-    config = function ()
+    config = function()
       vim.keymap.set(
         'i',
         '<C-k>',
-        function () return vim.fn['codeium#Accept']() end,
-        { expr = true, silent = true, noremap=true }
+        function() return vim.fn['codeium#Accept']() end,
+        { expr = true, silent = true, noremap = true }
       )
 
       vim.keymap.set(
         'i',
         '<C-j>',
         function() return vim.fn['codeium#CycleCompletions'](1) end,
-        { expr = true, silent = true, noremap=true }
+        { expr = true, silent = true, noremap = true }
       )
 
       vim.keymap.set(
         'i',
         '<C-f>',
         function() return vim.fn['codeium#CycleCompletions'](-1) end,
-        { expr = true, silent = true, noremap=true }
+        { expr = true, silent = true, noremap = true }
       )
 
       vim.keymap.set(
         'i',
         '<C-x>',
         function() return vim.fn['codeium#Clear']() end,
-        { expr = true, silent = true, noremap=true }
+        { expr = true, silent = true, noremap = true }
       )
 
-      vim.keymap.set('i', '<C-l>', function ()
-        local fullCompletion = vim.api.nvim_eval("b:_codeium_completions.items[b:_codeium_completions.index].completionParts[0].text")
+      vim.keymap.set('i', '<C-l>', function()
+        local fullCompletion = vim.api.nvim_eval(
+        "b:_codeium_completions.items[b:_codeium_completions.index].completionParts[0].text")
         local cursor = vim.api.nvim_win_get_cursor(0)
         local line = vim.api.nvim_get_current_line()
         local completion = string.match(fullCompletion, '[ ,;.]*[^ ,;.]+')
-        vim.defer_fn(function ()
+        vim.defer_fn(function()
           if (string.match(completion, '^\t')) then
             vim.api.nvim_buf_set_lines(0, cursor[1], cursor[1], true, { completion })
             vim.api.nvim_win_set_cursor(0, { cursor[1] + 1, #completion })
@@ -411,7 +418,7 @@ require('lazy').setup({
             vim.api.nvim_win_set_cursor(0, { cursor[1], cursor[2] + #completion })
           end
         end, 0)
-        end, { expr = true })
+      end, { expr = true })
     end
   },
   {
@@ -438,7 +445,7 @@ require('lazy').setup({
       "SmiteshP/nvim-navic",
       "nvim-tree/nvim-web-devicons",
     },
-    opts = { },
+    opts = {},
   },
   {
     "ellisonleao/gruvbox.nvim",
@@ -453,13 +460,13 @@ require('lazy').setup({
   {
     "aaronhallaert/advanced-git-search.nvim",
     config = function()
-        require("telescope").setup{
-            extensions = {
-                advanced_git_search = { }
-            }
+      require("telescope").setup {
+        extensions = {
+          advanced_git_search = {}
         }
+      }
 
-        require("telescope").load_extension("advanced_git_search")
+      require("telescope").load_extension("advanced_git_search")
     end,
     dependencies = {
       "nvim-telescope/telescope.nvim",
@@ -471,9 +478,9 @@ require('lazy').setup({
     'saecki/crates.nvim',
     tag = 'stable',
     config = function()
-        require('crates').setup({
-          popup = { border = 'rounded' },
-        })
+      require('crates').setup({
+        popup = { border = 'rounded' },
+      })
     end,
   }
 })

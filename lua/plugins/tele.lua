@@ -1,5 +1,6 @@
 require('telescope').load_extension('harpoon')
 require('telescope').load_extension('git_worktree')
+require('telescope').load_extension('projects')
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
@@ -39,6 +40,7 @@ vim.keymap.set('n', '<leader>sm', ":Telescope harpoon marks<CR>", { desc = 'Harp
 vim.keymap.set("n", "<Leader>sr", "<CMD>lua require('telescope').extensions.git_worktree.git_worktrees()<CR>", silent)
 vim.keymap.set("n", "<Leader>sR", "<CMD>lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>", silent)
 vim.keymap.set("n", "<Leader>sn", "<CMD>lua require('telescope').extensions.notify.notify()<CR>", silent)
+vim.keymap.set('n', '<leader>sp', ":lua require'telescope'.extensions.projects.projects{}<CR>", {noremap = true, silent = true})
 
 vim.api.nvim_create_autocmd("WinLeave", {
   callback = function()
