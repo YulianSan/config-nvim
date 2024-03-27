@@ -7,8 +7,11 @@ require('telescope').load_extension('projects')
 require('telescope').setup {
   defaults = {
     path_display = function(opts, path)
-      local tail = require("telescope.utils").path_tail(path)
-      return string.format("%s (%s)", tail, path), { { { 1, #tail }, "Constant" } }
+      local filename, parent_dir = path:match("([^/]*)/?([^/]*)$")
+      filename = filename or ''
+      parent_dir = (parent_dir and parent_dir ~= '' and '/' .. parent_dir) or ''
+
+      return string.format("%s%s (%s)", filename, parent_dir, path), { { { 1, #filename }, "Constant" } }
     end,
     mappings = {
       i = {
