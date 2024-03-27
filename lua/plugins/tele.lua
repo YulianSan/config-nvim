@@ -6,6 +6,10 @@ require('telescope').load_extension('projects')
 -- See `:help telescope` and `:help telescope.setup()`
 require('telescope').setup {
   defaults = {
+    path_display = function(opts, path)
+      local tail = require("telescope.utils").path_tail(path)
+      return string.format("%s (%s)", tail, path), { { { 1, #tail }, "Constant" } }
+    end,
     mappings = {
       i = {
         ['<C-u>'] = false,
@@ -38,9 +42,11 @@ vim.keymap.set('n', '<leader>sb', require('telescope.builtin').buffers, { desc =
 vim.keymap.set('n', '<leader>sS', require('telescope.builtin').git_status, { desc = '' })
 vim.keymap.set('n', '<leader>sm', ":Telescope harpoon marks<CR>", { desc = 'Harpoon [M]arks' })
 vim.keymap.set("n", "<Leader>sr", "<CMD>lua require('telescope').extensions.git_worktree.git_worktrees()<CR>", silent)
-vim.keymap.set("n", "<Leader>sR", "<CMD>lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>", silent)
+vim.keymap.set("n", "<Leader>sR", "<CMD>lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>",
+  silent)
 vim.keymap.set("n", "<Leader>sn", "<CMD>lua require('telescope').extensions.notify.notify()<CR>", silent)
-vim.keymap.set('n', '<leader>sp', ":lua require'telescope'.extensions.projects.projects{}<CR>", {noremap = true, silent = true})
+vim.keymap.set('n', '<leader>sp', ":lua require'telescope'.extensions.projects.projects{}<CR>",
+  { noremap = true, silent = true })
 
 vim.api.nvim_create_autocmd("WinLeave", {
   callback = function()
