@@ -1,8 +1,10 @@
-
 require('dapui').setup()
 require('dap-go').setup()
 require('nvim-dap-virtual-text').setup()
-vim.fn.sign_define('DapBreakpoint', { text='🔴', texthl='DapBreakpoint', linehl='DapBreakpoint', numhl='DapBreakpoint' })
+vim.api.nvim_set_hl(0, 'DapBreakpoint', { ctermbg = 0, fg = '#e06c75' })
+
+vim.fn.sign_define('DapBreakpoint', { text = ' ', texthl = 'DapBreakpoint', linehl = 'DapBreakpoint',
+  numhl = 'DapBreakpoint' })
 
 vim.keymap.set('n', '<F5>', require 'dap'.continue)
 vim.keymap.set('n', '<F10>', require 'dap'.step_over)
@@ -14,13 +16,13 @@ vim.keymap.set('n', '<leader>B', function()
 end)
 
 vim.keymap.set("n", "<leader>du", require 'dapui'.toggle)
-vim.keymap.set("n", "<leader>db", ":DapToggleBreakpoint<CR>", {noremap=true})
-vim.keymap.set("n", "<leader>dc", ":DapContinue<CR>", {noremap=true})
-vim.keymap.set("n", "<leader>dr", ":lua require('dapui').open({reset = true})<CR>", {noremap=true})
+vim.keymap.set("n", "<leader>db", ":DapToggleBreakpoint<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>dc", ":DapContinue<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>dr", ":lua require('dapui').open({reset = true})<CR>", { noremap = true })
 
 require("dap-vscode-js").setup({
   -- node_path = "node", -- Path of node executable. Defaults to $NODE_PATH, and then "node"
-  debugger_path = vim.fn.stdpath('data') .. "/lazy/vscode-js-debug", -- Path to vscode-js-debug installation.
+  debugger_path = vim.fn.stdpath('data') .. "/lazy/vscode-js-debug",                                                       -- Path to vscode-js-debug installation.
   -- debugger_cmd = { "extension" }, -- Command to use to launch the debug server. Takes precedence over `node_path` and `debugger_path`.
   adapters = { 'chrome', 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost', 'node', 'chrome' }, -- which adapters to register in nvim-dap
   -- log_file_path = "(stdpath cache)/dap_vscode_js.log" -- Path for file logging
@@ -91,7 +93,7 @@ require('nvim-dap-virtual-text').setup({
 dap.adapters.php = {
   type = 'executable',
   command = 'node',
-  args = { os.getenv('HOME') .. '/vscode-php-debug/out/phpDebug.js'},
+  args = { os.getenv('HOME') .. '/vscode-php-debug/out/phpDebug.js' },
 }
 
 dap.configurations.php = {
@@ -110,7 +112,36 @@ dap.configurations.php = {
     type = "php",
     request = "launch",
     port = 9003,
-    cwd="${fileDirname}",
+    cwd = "${fileDirname}",
     program = "${file}",
+  },
+}
+
+dap.adapters.lldb = {
+  type = "executable",
+  command = "/usr/bin/lldb-vscode", -- adjust as needed
+  name = "lldb",
+}
+
+dap.adapters.codelldb = {
+  type = 'server',
+  port = "${port}",
+  executable = {
+    command = '/usr/bin/codelldb',
+    args = { "--port", "${port}" },
+  }
+}
+
+dap.configurations.rust = {
+  {
+    name = "Rust debug",
+    type = "codelldb",
+    request = "launch",
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/target/debug/', 'file')
+    end,
+    cwd = '${workspaceFolder}',
+    stopOnEntry = true,
+    showDisassembly = "never"
   },
 }
