@@ -58,7 +58,9 @@ local servers = {
 	'tailwindcss',
 	'clangd',
 	'rust_analyzer',
-	'lua_ls'
+	'lua_ls',
+	'dockerls',
+	'docker_compose_language_service',
 }
 
 -- Ensure the servers above are installed
@@ -325,7 +327,8 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 lspconfig.emmet_ls.setup({
 	-- on_attach = on_attach,
 	capabilities = capabilities,
-	filetypes = { "css", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue" },
+	filetypes = { "css", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug",
+		"typescriptreact", "vue" },
 	init_options = {
 		html = {
 			options = {
@@ -334,3 +337,13 @@ lspconfig.emmet_ls.setup({
 		},
 	}
 })
+
+function docker_fix()
+	local filename = vim.fn.expand("%:t")
+
+	if filename == "docker-compose.yaml" then
+		vim.bo.filetype = "yaml.docker-compose"
+	end
+end
+
+vim.cmd [[au BufRead * lua docker_fix()]]
