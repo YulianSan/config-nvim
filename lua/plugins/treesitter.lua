@@ -3,8 +3,8 @@
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
   autotag = { enable = true },
-  ensure_installed = { 
-    'go', 'lua', 'python', 'rust', 'typescript', 'regex', 
+  ensure_installed = {
+    'go', 'lua', 'python', 'rust', 'typescript', 'regex',
     'bash', 'markdown', 'markdown_inline', 'kdl', 'sql', 'org',
     'javascript', 'html', 'c_sharp', 'php', 'tsx', 'vue', 'c'
   },
@@ -30,10 +30,10 @@ require('nvim-treesitter.configs').setup {
       lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
       keymaps = {
         -- You can use the capture groups defined in textobjects.scm
-        ["a="] = "@assignment.outer",
-        ["i="] = "@assignment.inner",
-        ["l="] = "@assignment.lhs",
-        ["r="] = "@assignment.rhs",
+        ["=a"] = "@assignment.outer",
+        ["=i"] = "@assignment.inner",
+        ["=l"] = "@assignment.lhs",
+        ["=h"] = "@assignment.rhs",
         ['aa'] = '@parameter.outer',
         ['ia'] = '@parameter.inner',
         ['af'] = '@function.outer',
@@ -84,4 +84,3 @@ require('nvim-treesitter.configs').setup {
     },
   },
 }
-
